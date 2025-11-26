@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Free Hearing Test Near You | HearPro</title>
+
+<!-- Fonts: Poppins (headings) + Inter (body) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blue: #55C4F9;
+  --blue-dark: #2A95E8;
+  --navy: #44536A;
+  --black: #1A1A1A;
+  --darkgrey: #3A4455;
+  --text: #2C3A4D;
+  --muted: #75819B;
+  --radius: 18px;
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
+  --shadow-strong: 0 20px 40px rgba(0,0,0,0.12);
+  --header-height: 72px;
+}
+
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Inter", sans-serif;
+  background: #ffffff;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: -0.02em;
+}
+h1 { color: var(--black); }
+h2, h3 { color: var(--darkgrey); }
+h4 {color:var(--white); }
+
+/* HEADER */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #ffffff;
+  border-bottom: 1px solid #E7EDF7;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  padding: 0 48px;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.brand img {
+  height: 34px;
+}
+
+/* NAVIGATION */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 14px;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-menu > li {
+  position: relative;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 500;
+  padding: 4px 0;
+}
+
+.nav-menu a:hover {
+  color: var(--darkgrey);
+}
+
+/* Dropdown styling */
+.has-dropdown > a::after {
+  content: "▾";
+  font-size: 10px;
+  margin-left: 4px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  min-width: 230px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(15, 27, 56, 0.15);
+  border: 1px solid #E2E8F4;
+  list-style: none;
+  padding: 10px 0;
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: 0.15s ease;
+  z-index: 30;
+}
+
+.has-dropdown:hover .dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.dropdown li a {
+  display: block;
+  padding: 9px 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.dropdown li a:hover {
+  background: #F4F7FF;
+  color: var(--darkgrey);
+}
+
+/* Search icon button */
+.search-btn {
+  background: #F1F6FF;
+  border: 1px solid #D3E3F8;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  color: var(--darkgrey);
+}
+.search-btn:hover {
+  background: #E2EEFF;
+  transform: translateY(-1px);
+}
+
+/* Header CTA */
+.nav-cta {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(42,149,232,0.3);
+}
+.nav-cta:hover { transform: translateY(-1px); }
+
+/* HERO */
+.hero {
+  padding: 60px 48px 60px;
+  background: linear-gradient(
+    135deg,
+    #F2F8FF 0%,
+    #D4E8FF 40%,
+    #C3E0FF 70%,
+    #B4D7FF 100%
+  );
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  min-height: calc(100vh - var(--header-height));
+  align-items: center;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 999px;
+  background: rgba(85,196,249,0.18);
+  color: var(--blue-dark);
+  margin-bottom: 20px;
+}
+
+.hero-left h1 {
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.hero-left p {
+  font-size: 18px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.hero-left ul {
+  padding-left: 22px;
+  font-size: 16px;
+}
+.hero-left li { margin-bottom: 8px; }
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Image card */
+.image-card {
+  background: linear-gradient(135deg, #F5FBFF, #E4F3FF);
+  padding: 12px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+.image-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--radius);
+}
+.image-caption {
+  font-size: 13px;
+  color: var(--muted);
+  padding-top: 6px;
+}
+
+/* Form */
+.form-box {
+  background: #ffffff;
+  padding: 26px;
+  border-radius: var(--radius);
+  border: 1px solid #E4ECF6;
+  box-shadow: var(--shadow-soft);
+}
+.form-box h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+.form-box p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+input {
+  width: 100%;
+  padding: 13px 14px;
+  border-radius: 10px;
+  border: 1px solid #D2DBE8;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+input:focus {
+  border-color: var(--blue-dark);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(42,149,232,0.15);
+}
+.button-primary {
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: var(--shadow-strong);
+}
+.button-primary:hover { transform: translateY(-2px); }
+.form-note {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* TRUST SECTION WITH LOGOS + STATS – WHITE */
+.trust-pro {
+  padding: 70px 48px;
+  background: #ffffff;
+  text-align: center;
+  border-top: 1px solid #E4ECF6;
+  border-bottom: 1px solid #E4ECF6;
+}
+
+.trust-pro h2 {
+  font-size: 35px;
+  font-weight: 600;
+  margin-bottom: 26px;
+}
+
+/* Logo strip */
+.trust-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.trust-logos img {
+  max-height: 40px;
+  width: auto;
+  filter: grayscale(0.1);
+  opacity: 0.9;
+}
+
+/* Stat cards */
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.trust-item {
+  background: #fafbff;
+  padding: 24px 18px;
+  border-radius: var(--radius);
+  border: 1px solid #E4ECF6;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  transition: 0.2s ease;
+}
+
+.trust-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+}
+
+.trust-item h3 {
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.trust-item p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* WHY CHOOSE HEARPRO – BLUE BAND, TEXT + IMAGE */
+.why-choose {
+  padding: 80px 48px;
+  background: linear-gradient(
+    135deg,
+    #E5F2FF 0%,
+    #D2EAFF 40%,
+    #C3E3FF 100%
+  );
+}
+
+.why-inner {
+  max-width: 1150px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.why-text h2 {
+  font-size: 30px;
+  color: var(--darkgrey);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.why-sub {
+  color: #5f6b82;
+  margin-bottom: 26px;
+  font-size: 16px;
+}
+
+/* Bullet list */
+.why-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.why-list li {
+  margin-bottom: 20px;
+  padding-left: 26px;
+  position: relative;
+}
+
+.why-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  color: var(--blue-dark);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.why-list h3 {
+  font-size: 17px;
+  margin-bottom: 4px;
+  color: var(--darkgrey);
+}
+
+.why-list p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* Image side */
+.why-image img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+/* STEPS – HOW IT WORKS */
+.steps {
+  padding: 70px 48px;
+  background: #ffffff;
+  text-align: center;
+  border-top: 1px solid #E4ECF6;
+}
+.steps h2 {
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+.steps p {
+  color: var(--muted);
+  margin-bottom: 34px;
+}
+
+.step-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  justify-content: center;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.step {
+  background: #f9fbff;
+  border-radius: 16px;
+  padding: 24px 22px;
+  text-align: left;
+  border: 1px solid #D8E5F8;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+  transition: 0.2s;
+}
+
+.step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.08);
+}
+
+.step-number {
+  width: 28px;
+  height: 28px;
+  background: #ffffff;
+  color: var(--blue-dark);
+  border-radius: 999px;
+  border: 2px solid #B6D7FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.step h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.step p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ARTICLES SECTION (LATEST ARTICLES) */
+.articles {
+  padding: 70px 48px;
+  background: #fbfcff;
+}
+
+.articles-inner {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.articles-inner h2 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.articles-sub {
+  color: var(--muted);
+  font-size: 16px;
+  margin-bottom: 28px;
+}
+
+/* invisible anchors so header dropdown links still work */
+.anchor-point {
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* grid of 6 articles */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.article-card {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #E2E8F4;
+  padding: 14px 14px 18px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+  transition: 0.18s ease;
+  cursor: pointer;
+}
+
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.08);
+}
+
+.article-thumb {
+  width: 100%;
+  height: 130px;
+  border-radius: 14px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.article-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--darkgrey);
+}
+
+.article-author {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ABOUT / FAQ / CTA / FOOTER */
+.about {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 32px 50px;
+}
+.about h2 {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+.about p {
+  color: var(--muted);
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.faq {
+  background: #F7F9FC;
+  padding: 60px 32px;
+}
+.faq-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.faq h2 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+details {
+  background: #ffffff;
+  border-radius: var(--radius);
+  border: 1px solid #DCE5F2;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+details summary {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
+details[open] summary {
+  margin-bottom: 10px;
+}
+details div {
+  font-size: 14px;
+  color: var(--muted);
+  padding-left: 4px;
+}
+
+.final-cta {
+  background: linear-gradient(135deg, var(--blue-dark), var(--navy));
+  text-align: center;
+  padding: 70px 32px;
+  color: #ffffff;
+}
+.final-cta h4 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.final-cta p {
+  margin-bottom: 24px;
+  color: #FFFFFF;
+}
+
+footer {
+  background: #0F1C31;
+  color: #C7D3EC;
+  text-align: center;
+  padding: 28px 10px;
+  font-size: 12px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 980px) {
+  .nav-menu { display: none; }
+  header { padding: 0 20px; }
+  .hero { grid-template-columns: 1fr; padding: 40px 20px; min-height: auto; }
+  .hero-right { max-width: 480px; margin: 0 auto; }
+  .step-boxes { grid-template-columns: 1fr; }
+  .trust-grid { grid-template-columns: 1fr 1fr; }
+  .why-inner { grid-template-columns: 1fr; }
+  .why-image { order: -1; margin-bottom: 20px; }
+  .articles-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 600px) {
+  .trust-grid { grid-template-columns: 1fr; }
+  .why-choose { padding: 60px 20px; }
+  .steps { padding: 60px 20px; }
+  .articles { padding: 60px 20px; }
+  .articles-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <img src="hearpro-logo.png" alt="HearPro logo" />
+    </div>
+
+    <nav class="nav">
+      <ul class="nav-menu">
+        <!-- still pointing to anchors in article section -->
+        <li class="has-dropdown">
+          <a href="#">Hearing Health</a>
+          <ul class="dropdown">
+            <li><a href="#hearing-basics">Hearing Health Basics</a></li>
+            <li><a href="#hearing-loss">Hearing Loss &amp; Symptoms</a></li>
+            <li><a href="#hearing-prevention">Prevention &amp; Ear Care</a></li>
+          </ul>
+        </li>
+
+        <li class="has-dropdown">
+          <a href="#">Hearing Tests</a>
+          <ul class="dropdown">
+            <li><a href="#test-overview">What Is a Hearing Test?</a></li>
+            <li><a href="#when-to-test">When Should I Get Tested?</a></li>
+            <li><a href="#test-process">What Happens at the Appointment?</a></li>
+          </ul>
+        </li>
+
+        <li class="has-dropdown">
+          <a href="#">Hearing Aids</a>
+          <ul class="dropdown">
+            <li><a href="#aid-basics">Hearing Aid Basics</a></li>
+            <li><a href="#aid-types">Types &amp; Technology</a></li>
+            <li><a href="#aid-costs">Costs &amp; Financing</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#about-us">About Us</a></li>
+      </ul>
+
+      <button class="search-btn" aria-label="Search">🔍</button>
+      <a href="#appointment" class="nav-cta">Book your appointment</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-left">
+    <span class="tag">Book Your Appointment</span>
+    <h1>Start your journey to better hearing.</h1>
+    <p>Get matched with a licensed specialist in your area and book your free hearing test today!</p>
+
+    <ul>
+      <li>Fast appointment scheduling</li>
+      <li>Licensed, local audiologists</li>
+      <li>No obligation &amp; completely free</li>
+    </ul>
+  </div>
+
+  <div class="hero-right" id="appointment">
+    <div class="image-card">
+      <img src="hearingtest.jpg" alt="Hearing test" />
+      <div class="image-caption">A friendly specialist guides you through a quick, comfortable hearing check.</div>
+    </div>
+
+    <div class="form-box">
+  <h3>Check local availability</h3>
+  <p>Tell us where you live and we’ll match you with a nearby hearing specialist.</p>
+
+  <div class="form-row">
+    <input type="text" placeholder="ZIP Code" />
+    <input type="number" placeholder="Age" />
+  </div>
+
+  <input type="text" placeholder="First Name" />
+  <input type="tel" placeholder="Phone Number" />
+  <input type="email" placeholder="Email Address" />
+
+  <button class="button-primary">Check Availability</button>
+
+  <div class="form-note">
+    Your information is safe and confidential. By submitting, you agree to be contacted by a hearing specialist.
+  </div>
+</div>
+
+</section>
+
+<section class="trust-pro">
+  <h2>Trusted by Leading Hearing Specialists</h2>
+
+  <div class="trust-logos">
+    <img src="Amplifon-Logo.png" alt="Amplifon logo" />
+    <img src="Audika-logo.jpg" alt="Audika logo" />
+    <img src="audionovaUS.png" alt="AudioNova logo" />
+  </div>
+
+  <div class="trust-grid">
+    <div class="trust-item">
+      <h3>⭐ 4.9/5 Average Rating</h3>
+      <p>Based on feedback from patients nationwide.</p>
+    </div>
+    <div class="trust-item">
+      <h3>🏅 Certified Clinics</h3>
+      <p>Partnering with Amplifon, Audika, AudioNova &amp; more.</p>
+    </div>
+    <div class="trust-item">
+      <h3>👩‍⚕️ 12,000+ Tests Booked</h3>
+      <p>Thousands of hearing tests completed every month.</p>
+    </div>
+    <div class="trust-item">
+      <h3>📞 60-Minute Response Time</h3>
+      <p>Most patients receive a callback within minutes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="why-choose">
+  <div class="why-inner">
+    <div class="why-text">
+      <h2>Why People Choose HearPro</h2>
+      <p class="why-sub">We make hearing care simple, fast, and stress-free.</p>
+
+      <ul class="why-list">
+        <li>
+          <h3>Fast appointment scheduling</h3>
+          <p>Same-day or next-day availability in most areas. We coordinate directly with clinics so you don’t have to call around.</p>
+        </li>
+        <li>
+          <h3>Licensed audiologists only</h3>
+          <p>We partner exclusively with certified professionals to ensure your hearing test is accurate and clinically sound.</p>
+        </li>
+        <li>
+          <h3>No sales pressure after your test</h3>
+          <p>Your hearing test is completely free. You receive clear results and recommendations—without pushy sales tactics.</p>
+        </li>
+        <li>
+          <h3>Nationwide network of trusted clinics</h3>
+          <p>From large brands to independent specialists, we work with reputable providers in cities and regions across the country.</p>
+        </li>
+        <li>
+          <h3>Easy online booking in under a minute</h3>
+          <p>Fill out a quick form and we’ll handle the rest. No phone queues, no complicated paperwork—just a fast callback.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="why-image">
+      <img src="Smiling Senior Woman with Hearing Aid.png"
+           alt="Smiling senior woman with hearing aid" />
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <h2>How It Works</h2>
+  <p>A simple 3-step process designed to be clear and stress-free.</p>
+
+  <div class="step-boxes">
+    <div class="step">
+      <div class="step-number">1</div>
+      <h3>Tell us about your hearing</h3>
+      <p>Share a few details so we understand your hearing situation.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <h3>Get matched with a specialist</h3>
+      <p>We connect you with a licensed hearing care professional in your area.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <h3>Book your free hearing test</h3>
+      <p>Your specialist will call to confirm your appointment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LATEST ARTICLES SECTION -->
+<section class="articles">
+  <div class="articles-inner">
+    <!-- invisible anchors for header dropdowns -->
+    <div class="anchor-point" id="hearing-basics"></div>
+    <div class="anchor-point" id="hearing-loss"></div>
+    <div class="anchor-point" id="hearing-prevention"></div>
+    <div class="anchor-point" id="test-overview"></div>
+    <div class="anchor-point" id="when-to-test"></div>
+    <div class="anchor-point" id="test-process"></div>
+    <div class="anchor-point" id="aid-basics"></div>
+    <div class="anchor-point" id="aid-types"></div>
+    <div class="anchor-point" id="aid-costs"></div>
+
+    <h2>Latest articles</h2>
+    <p class="articles-sub">
+      Learn more about hearing aids, technology and everyday life with better hearing.
+    </p>
+
+    <div class="articles-grid">
+      <!-- Row 1 -->
+      <article class="article-card">
+        <img src="hearingaidsforyou.jpg" alt="Hearing aid styles" class="article-thumb" />
+        <h3 class="article-title">Which hearing aid style is right for you?</h3>
+        <p class="article-author">HearPro Editorial Team</p>
+      </article>
+
+      <article class="article-card">
+        <img src="rechargeable.jpg" alt="Rechargeable hearing aids" class="article-thumb" />
+        <h3 class="article-title">Rechargeable vs disposable batteries: which hearing aid power option wins?</h3>
+        <p class="article-author">HearPro Editorial Team</p>
+      </article>
+
+      <article class="article-card">
+        <img src="cost.jpg" alt="Hearing aid cost" class="article-thumb" />
+        <h3 class="article-title">How much do hearing aids cost? Prices, features &amp; financing explained</h3>
+        <p class="article-author">HearPro Editorial Team</p>
+      </article>
+
+      <!-- Row 2 -->
+      <article class="article-card">
+        <img src="firstweek.jpg" alt="First week with hearing aids" class="article-thumb" />
+        <h3 class="article-title">Your first week with new hearing aids: what to expect</h3>
+        <p class="article-author">HearPro Editorial Team</p>
+      </article>
+
+      <article class="article-card">
+        <img src="hearingtest.jpg" alt="Hearing test before hearing aids" class="article-thumb" />
+        <h3 class="article-title">Do you need a hearing test before getting hearing aids?</h3>
+        <p class="article-author">HearPro Editorial Team</p>
+      </article>
+
+      <article class="article-card">
+        <img src="hearingaidsforyou.jpg" alt="Hearing aid care and maintenance" class="article-thumb" />
+        <h3 class="article-title">How long do hearing aids last? Care, cleaning &amp; maintenance tips</h3>
+        <p class="article-author">HearPro Editorial Team</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about-us">
+  <h2>About HearPro</h2>
+  <p>HearPro connects people experiencing hearing changes with trusted, local hearing specialists. We’re not a clinic ourselves; we work with a network of licensed audiologists and hearing care professionals.</p>
+  <p>Our goal is simple: make it fast and stress-free to book a free hearing test, understand your results, and explore your options if support is needed.</p>
+</section>
+
+<section class="faq">
+  <div class="faq-inner">
+    <h2>Frequently Asked Questions</h2>
+
+    <details open>
+      <summary>Is the hearing test really free?</summary>
+      <div>Yes. There’s no cost or obligation to buy anything.</div>
+    </details>
+
+    <details>
+      <summary>Who contacts me after I submit the form?</summary>
+      <div>A licensed hearing specialist from a local clinic will contact you to confirm your details and appointment time.</div>
+    </details>
+
+    <details>
+      <summary>How long will it take to hear back?</summary>
+      <div>Most people receive a call within 10–30 minutes during business hours.</div>
+    </details>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h4>Ready to Check Your Hearing?</h4>
+  <p>It takes less than a minute to get matched with a nearby specialist.</p>
+  <button class="button-primary" style="max-width:260px;">Book My Free Hearing Test</button>
+</section>
+
+<footer>
+  © 2025 HearPro • We connect users with licensed hearing specialists.
+</footer>
+
+</body>
+</html>
